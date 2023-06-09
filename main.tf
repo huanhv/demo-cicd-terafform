@@ -39,8 +39,14 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_policy_attachment" {
-  policy_arn = "arn:aws:iam::762676724532:policy/lambda_policy"
-  role       = "arn:aws:iam::762676724532:role/service-role/Clone_data_from_GCS_to_S3-role-v2xqo06p"
+  name = "aws_iam_role_policy_attachment"
+
+  roles = [ 
+    aws_iam_role.managed-role.name, 
+    "Clone_data_from_GCS_to_S3-role-v2xqo06p"
+  ]
+
+  policy_arn = aws_iam_policy.lambda_policy.arn
 }
 
 resource "aws_lambda_function" "sample_lambda" {
