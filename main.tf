@@ -20,6 +20,7 @@ resource "aws_iam_role" "lambda_execution_role" {
   ]
 }
 EOF
+}
 
   # Attach the necessary policies to the IAM role (adjust as per your requirements)
   policy {
