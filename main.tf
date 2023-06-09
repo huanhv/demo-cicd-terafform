@@ -20,12 +20,14 @@ resource "aws_iam_role" "lambda_execution_role" {
   ]
 }
 EOF
+
 }
 
-  # Attach the necessary policies to the IAM role (adjust as per your requirements)
-  policy {
-    name   = "lambda_policy"
-    policy = <<EOF
+resource "aws_iam_policy" "lambda_policy" {
+  name        = "lambda_policy"
+  description = "Policy for Lambda function"
+
+  policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -55,6 +57,11 @@ EOF
   ]
 }
 EOF
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_policy_attachment" {
+  policy_arn = aws_iam_policy.lambda_policy.arn
+  role       = aws_iam_role.lambda_execution_role.name
 }
 
 resource "aws_lambda_function" "sample_lambda" {
