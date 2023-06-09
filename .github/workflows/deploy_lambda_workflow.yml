@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   deploy:
@@ -25,13 +22,14 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run unit tests
-        run: pytest
+        run: |
+          python -m pytest
 
       - name: Package Lambda function
         run: zip -r lambda_function.zip lambda_function.py
 
       - name: Deploy Lambda function
-        uses: appleboy/lambda-action
+        uses: appleboy/lambda-action@v1
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
