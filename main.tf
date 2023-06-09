@@ -40,12 +40,12 @@ EOF
 
 resource "aws_iam_role_policy_attachment" "lambda_policy_attachment" {
   policy_arn = aws_iam_policy.lambda_policy.arn
-  role       = "Clone_data_from_GCS_to_S3-role-v2xqo06p"
+  role       = "arn:aws:iam::ACCOUNT_ID:role/Clone_data_from_GCS_to_S3-role-v2xqo06p""
 }
 
 resource "aws_lambda_function" "sample_lambda" {
   function_name    = "sample_lambda_function_ff"
-  role             = "Clone_data_from_GCS_to_S3-role-v2xqo06p"
+  role             = "arn:aws:iam::ACCOUNT_ID:role/Clone_data_from_GCS_to_S3-role-v2xqo06p""
   handler          = "lambda_function.lambda_handler"
   runtime          = "python3.8"
   timeout          = 60
