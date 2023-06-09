@@ -57,7 +57,7 @@ resource "aws_lambda_function" "sample_lambda" {
   timeout       = 60
   memory_size   = 128
 
-  filename = "lambda_function"
+  filename = "lambda_function.py"
 
   environment {
     variables = {
