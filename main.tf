@@ -51,7 +51,7 @@ resource "aws_iam_policy_attachment" "lambda_policy_attachment" {
 
 resource "aws_lambda_function" "sample_lambda" {
   function_name = "sample_lambda_function"
-  role          = data.aws_iam_role.karpenter_node_group_role.name
+  role          = "arn:aws:iam::762676724532:role/service-role/Clone_data_from_GCS_to_S3-role-v2xqo06p"
   handler       = "lambda_function.lambda_handler"
   runtime       = "python3.8"
   timeout       = 60
