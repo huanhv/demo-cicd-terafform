@@ -43,6 +43,8 @@ data "aws_iam_role" "karpenter_node_group_role" {
 }
 
 resource "aws_iam_policy_attachment" "lambda_policy_attachment" {
+  name        = "lambda_policy_attachment"
+
   policy_arn = aws_iam_policy.lambda_policy.arn
   roles      = [data.aws_iam_role.karpenter_node_group_role.name]
 }
