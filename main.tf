@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"  # Replace with your desired region
+  region = "us-east-1"
 }
 
 resource "aws_iam_role" "lambda_execution_role" {
@@ -45,14 +45,14 @@ resource "aws_iam_policy" "lambda_policy" {
       "Action": [
         "s3:GetObject"
       ],
-      "Resource": "arn:aws:s3:::bucket-sample1000/sample.csv"  # Replace with your S3 bucket and file ARN
+      "Resource": "arn:aws:s3:::bucket-sample1000/sample.csv"
     },
     {
       "Effect": "Allow",
       "Action": [
         "s3:PutObject"
       ],
-      "Resource": "arn:aws:s3:::bucket-sample1000/output/*"  # Replace with your S3 bucket output folder ARN
+      "Resource": "arn:aws:s3:::bucket-sample1000/output/*"
     }
   ]
 }
@@ -65,20 +65,19 @@ resource "aws_iam_role_policy_attachment" "lambda_policy_attachment" {
 }
 
 resource "aws_lambda_function" "sample_lambda" {
-  function_name    = "sample_lambda_function"  # Replace with your desired Lambda function name
+  function_name    = "sample_lambda_function_ffffff"
   role             = aws_iam_role.lambda_execution_role.arn
   handler          = "lambda_function.lambda_handler"
   runtime          = "python3.8"
   timeout          = 60
-  memory_size      = 128  # Adjust as per your requirements
+  memory_size      = 128
 
-  filename         = "lambda_function.py"  # Replace with the actual filename if different
+  filename         = "lambda_function.py"
 
-  # Environment variables (if required)
   environment {
     variables = {
-      BUCKET_NAME = "bucket-sample1000"  # Replace with your S3 bucket name
-      FILE_NAME   = "sample.csv"  # Replace with your file name
+      BUCKET_NAME = "bucket-sample1000"
+      FILE_NAME   = "sample.csv"
     }
   }
 }
