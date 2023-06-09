@@ -38,4 +38,4 @@ def lambda_handler(event, context):
         
     except Exception as e:
         print('Error occurred:', e)
-        raise Exception('An error occurred during processing.')  # Raise an exception on error
+        raise e
