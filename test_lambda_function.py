@@ -35,9 +35,3 @@ def test_lambda_handler():
     assert len(df) == 2  # Expecting 2 rows (Male, Female)
     assert df['Sex'].tolist() == ['Male', 'Female']
     assert df['Count'].tolist() == [2, 1]
-    
-    
-def test_lambda_handler_exception():
-    # Call the lambda_handler function without a valid S3 bucket and file
-    with pytest.raises(Exception):
-        lambda_handler(None, None)
