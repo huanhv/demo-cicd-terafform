@@ -40,7 +40,7 @@ EOF
 
 resource "aws_iam_role_policy_attachment" "lambda_policy_attachment" {
   policy_arn = "arn:aws:iam::762676724532:policy/lambda_policy"
-  role       = "arn:aws:iam::762676724532:role/Clone_data_from_GCS_to_S3_role_v2xqo06p"
+  role       = "Clone_data_from_GCS_to_S3_role_v2xqo06p"
 }
 
 resource "aws_lambda_function" "sample_lambda" {
